@@ -73,27 +73,6 @@ Open data browser:
 pnpm db:studio
 ```
 
-### Using the DB in Code (TypeScript Example)
-```ts
-import { createUser, listUsers } from '@hackuta/db';
-
-async function demo() {
-	const u = await createUser('alice@example.com', 'Alice');
-	console.log(await listUsers());
-}
-```
-
-### Using Prisma Client Directly in API (JS Example)
-`apps/api/src/index.js` example route snippet:
-```js
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
-
-app.get('/users', async (_req, res) => {
-	res.json(await prisma.user.findMany({ orderBy: { id: 'asc' } }));
-});
-```
-
 ## Development Workflows
 
 ### Start Everything
@@ -127,12 +106,6 @@ packages/
 	eslint-config/
 	typescript-config/
 ```
-
-## Recommended Next Steps
-1. Add API routes for CRUD (users, posts)
-2. Add auth (NextAuth / Lucia / custom)
-3. Introduce a seeding script (`prisma db seed`)
-4. Deploy (Vercel for web, maybe Railway/Fly/Render for API) or consolidate API into Next.js route handlers
 
 ## Troubleshooting
 | Issue | Fix |
