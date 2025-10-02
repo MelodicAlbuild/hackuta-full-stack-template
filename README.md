@@ -1,9 +1,3 @@
-yarn dlx turbo build
-yarn exec turbo build --filter=docs
-yarn exec turbo dev
-yarn exec turbo dev --filter=web
-yarn exec turbo login
-yarn exec turbo link
 <div align="center">
 
 # HackUTA Full Stack Template
