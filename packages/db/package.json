@@ -1,0 +1,23 @@
+{
+    "name": "@hackuta/db",
+    "version": "0.1.0",
+    "private": true,
+    "license": "MIT",
+    "type": "module",
+    "scripts": {
+        "prisma:generate": "prisma generate",
+        "prisma:migrate": "prisma migrate dev --name init",
+        "prisma:studio": "prisma studio",
+        "build": "echo 'db package has no build step'",
+        "check-types": "tsc --noEmit",
+        "lint": "echo 'no lint config for db yet'"
+    },
+    "dependencies": {
+        "@prisma/client": "^5.19.0"
+    },
+    "devDependencies": {
+        "prisma": "^5.19.0",
+        "typescript": "5.9.2",
+        "@types/node": "^20.12.12"
+    }
+}

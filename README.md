@@ -1,135 +1,155 @@
-# Turborepo starter
-
-This Turborepo starter is maintained by the Turborepo core team.
-
-## Using this example
-
-Run the following command:
-
-```sh
-npx create-turbo@latest
-```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
 yarn dlx turbo build
-pnpm exec turbo build
-```
-
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
 yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
 yarn exec turbo dev
-pnpm exec turbo dev
-```
-
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
 yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
 yarn exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
 yarn exec turbo link
-pnpm exec turbo link
+<div align="center">
+
+# HackUTA Full Stack Template
+
+Monorepo template featuring a Next.js frontend, Express API, shared UI library, and a Prisma + SQLite database package, all orchestrated with Turborepo & pnpm.
+
+</div>
+
+## Stack
+
+| Layer | Tech |
+|-------|------|
+| Frontend | Next.js 15 (`apps/web`) |
+| API | Express (`apps/api`) |
+| Database | Prisma ORM + SQLite (`packages/db`) |
+| Shared UI | React component lib (`packages/ui`) |
+| Tooling | Turborepo, pnpm, TypeScript, ESLint, Prettier |
+
+## Prerequisites
+
+- Node.js >= 18
+- pnpm 9 (`corepack enable` or install manually)
+
+Verify:
+```cmd
+node -v
+pnpm -v
 ```
 
-## Useful Links
+## Quick Start (All-in)
 
-Learn more about the power of Turborepo:
+```cmd
+pnpm install
+pnpm run setup
+pnpm dev
+```
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+Then visit:
+* Web: http://localhost:3000
+* API: http://localhost:3001
+
+## Root Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `pnpm dev` | Run all dev tasks (Next.js + API) concurrently via Turborepo |
+| `pnpm build` | Build all apps/packages |
+| `pnpm lint` | Lint all workspaces |
+| `pnpm check-types` | Type-check across the repo |
+| `pnpm format` | Prettier format |
+| `pnpm setup` | Generate Prisma client + run dev migration (idempotent) |
+| `pnpm db:generate` | Regenerate Prisma client |
+| `pnpm db:migrate` | Run `prisma migrate dev` interactively |
+| `pnpm db:studio` | Launch Prisma Studio |
+
+## Database (`@hackuta/db`)
+
+SQLite database lives under `packages/db/dev.db` (ignored by Git). Schema is in `packages/db/prisma/schema.prisma` with `User` and `Post` models.
+
+Environment file (already created): `packages/db/.env`
+```
+DATABASE_URL="file:./dev.db"
+```
+
+After changing the schema:
+```cmd
+pnpm db:generate
+pnpm db:migrate
+```
+
+Open data browser:
+```cmd
+pnpm db:studio
+```
+
+### Using the DB in Code (TypeScript Example)
+```ts
+import { createUser, listUsers } from '@hackuta/db';
+
+async function demo() {
+	const u = await createUser('alice@example.com', 'Alice');
+	console.log(await listUsers());
+}
+```
+
+### Using Prisma Client Directly in API (JS Example)
+`apps/api/src/index.js` example route snippet:
+```js
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
+app.get('/users', async (_req, res) => {
+	res.json(await prisma.user.findMany({ orderBy: { id: 'asc' } }));
+});
+```
+
+## Development Workflows
+
+### Start Everything
+```cmd
+pnpm dev
+```
+
+### Only Web
+```cmd
+pnpm turbo run dev --filter=web
+```
+
+### Only API
+```cmd
+pnpm --filter api dev
+```
+
+### Add a New Migration with a Name
+```cmd
+pnpm --filter @hackuta/db exec prisma migrate dev --name add_something
+```
+
+## Project Layout
+```
+apps/
+	web/        # Next.js app
+	api/        # Express server
+packages/
+	ui/         # Shared React components
+	db/         # Prisma + SQLite (User, Post)
+	eslint-config/
+	typescript-config/
+```
+
+## Recommended Next Steps
+1. Add API routes for CRUD (users, posts)
+2. Add auth (NextAuth / Lucia / custom)
+3. Introduce a seeding script (`prisma db seed`)
+4. Deploy (Vercel for web, maybe Railway/Fly/Render for API) or consolidate API into Next.js route handlers
+
+## Troubleshooting
+| Issue | Fix |
+|-------|-----|
+| Prisma client not found | Run `pnpm db:generate` |
+| Migration failure | Delete `dev.db` (dev only) then rerun `pnpm db:migrate` |
+| API can’t connect | Ensure `.env` exists inside `packages/db` |
+| ESM import path errors | Use explicit `.js` extensions when importing compiled TS in NodeNext mode |
+
+## License
+MIT — adapt freely.
+
+---
+Happy hacking! 🚀

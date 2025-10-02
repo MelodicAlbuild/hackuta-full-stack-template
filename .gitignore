@@ -36,3 +36,10 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
+
+# DB Ignore
+*.db
+*.db-journal
+
+# Prisma Migrations
+packages/db/prisma/migrations/
