@@ -8,23 +8,40 @@ generator client {
     provider = "prisma-client-js"
 }
 
-// Example model: User and Post for CRUD demo
-model User {
-    id        Int      @id @default(autoincrement())
-    email     String   @unique
-    name      String?
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    posts     Post[]
+// Task Management App Models
+model Task {
+    id          Int       @id @default(autoincrement())
+    title       String
+    description String?
+    completed   Boolean   @default(false)
+    categoryId  Int?
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    category    Category? @relation(fields: [categoryId], references: [id])
+    tags        TaskTag[]
 }
 
-model Post {
+model Category {
     id        Int      @id @default(autoincrement())
-    title     String
-    content   String?
-    published Boolean  @default(false)
-    author    User?    @relation(fields: [authorId], references: [id])
-    authorId  Int?
+    name      String   @unique
+    color     String   @default("#3b82f6")
     createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    tasks     Task[]
+}
+
+model Tag {
+    id        Int       @id @default(autoincrement())
+    name      String    @unique
+    color     String    @default("#10b981")
+    createdAt DateTime  @default(now())
+    tasks     TaskTag[]
+}
+
+model TaskTag {
+    taskId Int
+    tagId  Int
+    task   Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+    tag    Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+    @@id([taskId, tagId])
 }

@@ -8,9 +8,9 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
     "setup": "pnpm db:generate && pnpm db:migrate",
-    "db:generate": "pnpm --filter @hackuta/db exec prisma generate",
-    "db:migrate": "pnpm --filter @hackuta/db exec prisma migrate dev",
-    "db:studio": "pnpm --filter @hackuta/db exec prisma studio"
+    "db:generate": "pnpm --filter @repo/db exec prisma generate",
+    "db:migrate": "pnpm --filter @repo/db exec prisma migrate dev",
+    "db:studio": "pnpm --filter @repo/db exec prisma studio"
   },
   "devDependencies": {
     "prettier": "^3.6.2",

@@ -1,3 +1,2 @@
 export * from './client.js';
-export * from './user.js';
-export * from './post.js';
+export { PrismaClient } from '@prisma/client';
